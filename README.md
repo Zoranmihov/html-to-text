@@ -4,8 +4,6 @@ A lightweight Java utility designed to fetch web pages, strip away the "noise" (
 ## Features
 Multi-URL Support: Batch process multiple links into a single output file.
 
-Smart Cleaning: Automatically removes <script>, <style>, <nav>, <header>, and <footer> tags to keep your notes clutter-free.
-
 Structural Parsing: Maintains hierarchy by preserving headings (h1-h5), paragraphs, code blocks (pre), and even converting HTML tables into readable text grids.
 
 Decoupled Logic: The scraping engine is isolated from the CLI logic, making it easy to integrate into larger Java projects.
