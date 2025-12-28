@@ -29,7 +29,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>com.scraper.htmltotext.Scraper</mainClass>
+              <mainClass>com.scraper.htmltotext.ScraperGui</mainClass>
             </manifest>
           </archive>
         </configuration>

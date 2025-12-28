@@ -95,8 +95,8 @@ public class Scraper {
         }
     }
 
-    // Fetches HTML from a URL using Java HttpClient.
-    private static String fetchHtml(String url) throws IOException, InterruptedException {
+    // Fetches Page content
+    static String fetchHtml(String url) throws IOException, InterruptedException {
         URI uri = URI.create(url);
 
         HttpClient client = HttpClient.newBuilder()
@@ -121,8 +121,8 @@ public class Scraper {
         return new String(resp.body(), StandardCharsets.UTF_8);
     }
 
-    // Extracts readable text from HTML by removing noise and keeping key content elements.
-    private static String extractReadableText(String html) {
+    // Extract text from HTML
+    static String extractReadableText(String html) {
         Document doc = Jsoup.parse(html);
 
         doc.select("script, style, noscript, svg, canvas, iframe").remove();
