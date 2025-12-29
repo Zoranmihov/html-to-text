@@ -22,10 +22,11 @@ This will generate a JAR containing all dependencies
 
 ## Usage
 Run the application using the following command:
-
-Bash
-
 java -jar target/html-to-text-1.0.0.jar
+
+For linux yse the start.sh script
+
+For windows use the exe file 
 
 ## Workflow:
 Enter URLs: The app will prompt you for a link. You can keep adding links until you choose to stop.

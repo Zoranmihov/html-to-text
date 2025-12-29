@@ -7,7 +7,6 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
 import java.io.BufferedWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -32,8 +31,7 @@ public class ScraperGui {
     private static final Color DANGER = new Color(0xDC, 0x26, 0x26); // #DC2626
     private static final Color SELECTION_BG = new Color(0xDB, 0xEA, 0xFE); // #DBEAFE
     private static final Color SELECTION_FG = TEXT;
-
-    private static final Cursor POINTER_CURSOR = createPointerCursorOrFallback();
+    private static final Cursor POINTER_CURSOR = Cursor.getPredefinedCursor(Cursor.HAND_CURSOR);
 
     public ScraperGui() {
         JFrame frame = new JFrame("HTML to Text Scraper");
@@ -74,7 +72,6 @@ public class ScraperGui {
                 row.setBackground(rowBg);
                 row.setBorder(rowPadding);
 
-                
                 JLabel xBox = new JLabel("X", SwingConstants.CENTER);
                 xBox.setPreferredSize(new Dimension(xButtonWidth, base.getPreferredSize().height));
                 xBox.setMaximumSize(new Dimension(xButtonWidth, Integer.MAX_VALUE));
@@ -100,7 +97,7 @@ public class ScraperGui {
             }
         });
 
-        // Custom pointer over X region
+        
         urlList.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {
@@ -278,7 +275,6 @@ public class ScraperGui {
 
         frame.getContentPane().setBackground(BG);
 
-        
         urlField.setBackground(SURFACE);
         urlField.setForeground(TEXT);
         urlField.setCaretColor(TEXT);
@@ -316,36 +312,6 @@ public class ScraperGui {
                 b.setBackground(ACCENT);
             }
         });
-    }
-
-    private static Cursor createPointerCursorOrFallback() {
-        try {
-            Toolkit tk = Toolkit.getDefaultToolkit();
-            int size = 32;
-
-            BufferedImage img = new BufferedImage(size, size, BufferedImage.TYPE_INT_ARGB);
-            Graphics2D g = img.createGraphics();
-            g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-            g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-            Font f = new Font("Dialog", Font.PLAIN, 26);
-            g.setFont(f);
-
-            // Shadow
-            g.setColor(new Color(0, 0, 0, 140));
-            g.drawString("☞", 6, 26);
-
-            
-            g.setColor(TEXT);
-            g.drawString("☞", 5, 25);
-
-            g.dispose();
-
-            Point hotSpot = new Point(26, 10);
-            return tk.createCustomCursor(img, hotSpot, "pointer");
-        } catch (Exception ignored) {
-            return Cursor.getPredefinedCursor(Cursor.HAND_CURSOR);
-        }
     }
 
     private static void enforceAlwaysCentered(Window w) {
